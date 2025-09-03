@@ -99,5 +99,4 @@ firebase-debug.log
 firebase-debug.*.log
 
 # Local development
-.env.example
 IDEA.md

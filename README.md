@@ -166,6 +166,7 @@ The app automatically fetches previews for shared links, with special handling f
 
 ## 🏗️ Project Structure
 
+### 📁 Essential Files for Deployment:
 ```
 bandlink/                           # Project root
 ├── public/                         # Static files served by React
@@ -174,13 +175,13 @@ bandlink/                           # Project root
 │   ├── components/                # React components
 │   │   ├── DeleteConfirmDialog.js # Delete confirmation modal
 │   │   ├── FileCard.js           # Individual file/link display with previews
-│   │   ├── FileListOptimized.js  # 🆕 Optimized file listing with pagination
+│   │   ├── FileListOptimized.js  # Optimized file listing with pagination
 │   │   ├── InviteSystem.js       # Invitation link generator
 │   │   ├── LanguageSwitcher.js   # Language toggle component
 │   │   ├── UploadForm.js         # File/link upload with URL preview
 │   │   └── UserProfile.js        # Nickname and profile management
 │   ├── hooks/                    # Custom React hooks
-│   │   └── useUserProfileOptimized.js # 🆕 Optimized user profile with caching
+│   │   └── useUserProfileOptimized.js # Optimized user profile with caching
 │   ├── i18n/                     # Internationalization setup
 │   │   ├── locales/              # Translation files
 │   │   │   ├── en.json           # English translations
@@ -190,26 +191,25 @@ bandlink/                           # Project root
 │   │   └── urlPreview.js         # URL metadata fetching with CORS proxy
 │   ├── App.js                    # Main app component with routing
 │   ├── App.css                   # Global styles and responsive design
-│   ├── firebase.js               # 🆕 Firebase config with offline persistence
+│   ├── firebase.js               # Firebase config with offline persistence
 │   ├── index.js                  # React app entry point
 │   └── index.css                 # Base CSS styles
-├── build/                        # Production build output (created by npm run build)
-│   ├── static/                   # Static assets with hashed names
-│   │   ├── css/                  # Minified CSS files
-│   │   └── js/                   # Minified JS bundles
-│   ├── asset-manifest.json       # Asset mapping for deployment
-│   └── index.html                # Production HTML file
-├── node_modules/                 # Dependencies (not in git)
-├── .env                          # Environment variables (not in git)
 ├── .env.example                  # Environment variables template
 ├── .gitignore                    # Git ignore rules
 ├── package.json                  # Dependencies and scripts
 ├── package-lock.json             # Locked dependency versions
 ├── firebase.json                 # Firebase hosting configuration
-├── .firebaserc                   # Firebase project configuration
-├── CLAUDE.md                     # Development instructions
-├── IDEA.md                       # Original project concept
 └── README.md                     # This documentation
+```
+
+### 🚫 Auto-generated/Local Files (not in git):
+```
+├── .env                          # Your Firebase config (create from .env.example)
+├── .firebaserc                   # Your Firebase project ID (create with firebase use)
+├── node_modules/                 # Dependencies (npm install)
+├── build/                        # Production build (npm run build)
+├── .firebase/                    # Firebase cache
+└── .git/                         # Git repository data
 ```
 
 ## 🎨 Features Deep Dive
@@ -297,15 +297,20 @@ npm start
 
 **Essential Files for Production:**
 ```bash
-# Required for build process
+# Required files (must exist)
 package.json              # Dependencies and build scripts
 package-lock.json         # Locked dependency versions
 .env                      # Environment variables (create from .env.example)
-public/index.html         # HTML template
+.env.example              # Template for environment variables
+firebase.json             # Firebase hosting configuration
+public/                   # Static files including index.html
 src/                      # All source code files
+.gitignore                # Git ignore rules
 
-# Generated during build
-build/                    # Production output (created by npm run build)
+# Generated during build process
+.firebaserc               # Created by: firebase use your-project-id
+node_modules/             # Created by: npm install
+build/                    # Created by: npm run build
 ├── static/css/           # Minified stylesheets
 ├── static/js/            # Minified JavaScript bundles
 ├── asset-manifest.json   # Asset mapping
@@ -313,10 +318,9 @@ build/                    # Production output (created by npm run build)
 ```
 
 **Not needed for production:**
-- `node_modules/` (installed during build)
-- `sample code/` (reference files only)
-- `CLAUDE.md`, `IDEA.md` (development docs)
-- `.claude/` (IDE settings)
+- `.firebase/` (local Firebase cache - in .gitignore)
+- `.git/` (version control - separate concern)
+- `firebase-debug.log` (debug files - in .gitignore)
 
 ### Firebase Hosting (Recommended)
 
@@ -384,107 +388,12 @@ The app can be deployed to any static hosting service by uploading the `build/` 
 - **Input Validation**: URL validation and file type checking
 - **CORS Protection**: Proxy service for external URL fetching
 
-## 💰 Firebase Cost Optimization
-
-This app is designed to be cost-efficient for small teams (10 users). Here's how it minimizes Firebase costs:
-
-### 🔥 Firestore Optimizations:
-- **Pagination**: Only loads 20 files per page instead of all files
-- **Smart Listeners**: Real-time listeners only for new uploads, not entire collections
-- **Profile Caching**: User profiles cached for 5 minutes to prevent repeated reads
-- **Offline Persistence**: Uses IndexedDB to cache data locally and reduce network reads
-
-### 📊 Cost Breakdown (10 Active Users):
-| Operation | Before Optimization | After Optimization | Savings |
-|-----------|-------------------|------------------|---------|
-| Page Load | 50-200 reads | 20 reads | 75-90% |
-| New Upload | 10 reads/user | 1 read | 90% |
-| Profile Checks | 3-4 reads/login | 1 read (cached) | 75% |
-| **Total Daily** | **~2,000-5,000 reads** | **~200-500 reads** | **~80%** |
-
-### 💸 Monthly Costs (Blaze Plan):
-- **Free Tier**: 50,000 reads/day, 20,000 writes/day, 20,000 deletes/day
-- **With Optimizations**: ~6,000-15,000 reads/month = **FREE** 
-- **Without Optimizations**: ~60,000-150,000 reads/month = **$0-1** 
-- **Storage**: <1GB = **FREE**
-- **Bandwidth**: <10GB/month = **FREE**
-
-### 🛡️ Cost Protection Features:
-- Pagination prevents loading all files at once
-- Cached profiles reduce duplicate database calls
-- Offline persistence works when network is unavailable
-- Smart listeners only track new content, not updates to old content
-
-### 📈 Scalability:
-- **10 users**: Well within free tier limits
-- **50 users**: Still mostly free (~$2-5/month)
-- **100+ users**: Consider additional optimizations like compound queries and batch operations
-
-## ⚡ Performance Benchmarks
-
-### 🚀 Load Times:
-- **Initial Page Load**: ~1.2s (with cached Firebase config)
-- **File List (20 items)**: ~300ms (pagination)
-- **Profile Loading**: <50ms (cached for 5 minutes)
-- **New Upload Notification**: Real-time (WebSocket)
-
-### 📊 Bundle Analysis:
-```
-File sizes after gzip:
-  199.48 kB  build/static/js/main.js (React + Firebase + Components)
-    3.17 kB  build/static/css/main.css (Styles)
-  --------
-  202.65 kB  Total (Excellent for a full-featured app)
-```
-
-### 🏎️ Optimization Results:
-| Metric | Before | After | Improvement |
-|--------|--------|-------|-------------|
-| Firestore Reads/Day | 2,000-5,000 | 200-500 | **80% reduction** |
-| Initial Load Time | ~2.5s | ~1.2s | **52% faster** |
-| Profile Queries | Every component | Cached 5min | **95% reduction** |
-| Bundle Size | 199.51 kB | 199.48 kB | **30B smaller** |
-| Unused Files | 3 files | 0 files | **Clean codebase** |
-
 ## 🌍 Internationalization
 
 The app supports multiple languages through react-i18next:
 - **English (en)**: Default language
 - **Traditional Chinese (zh-TW)**: Complete translation
 - **Adding Languages**: Add new JSON files in `src/i18n/locales/`
-
-## 📋 Recent Updates & Changelog
-
-### Latest Version Features:
-- ✅ **Discord-like URL Previews** - Rich link previews with images, titles, and descriptions
-- ✅ **Delete Functionality** - Content owners can delete their uploads with confirmation
-- ✅ **Environment Variable Security** - Firebase config moved to secure environment variables
-- ✅ **Nickname Persistence** - Fixed nickname saving and loading across app restarts
-- ✅ **Enhanced Error Handling** - Better error messages and debugging information
-- ✅ **Mobile Responsive Design** - Improved mobile experience for all features
-- ✅ **Production Deployment** - Successfully deployed to Firebase Hosting
-- ✅ **Live Demo Available** - App accessible at https://your-project-id.web.app
-- ✅ **Comprehensive Documentation** - Updated README with troubleshooting guide
-
-### 🚀 Performance & Cost Optimizations:
-- ⚡ **Pagination System** - Load 20 files initially with "Load More" button (75% read reduction)
-- ⚡ **Profile Caching** - 5-minute cache for user profiles prevents duplicate reads
-- ⚡ **Smart Real-time Listeners** - Only listen for new uploads, not entire collections
-- ⚡ **Offline Persistence** - IndexedDB caching reduces network requests on refresh
-- ⚡ **Optimized File Structure** - Removed unused files and cleaned debug code
-- ⚡ **Bundle Size Optimization** - 199.48 kB gzipped production build
-
-### Technical Improvements:
-- 🔧 **FileListOptimized**: Replaced real-time listener with pagination and smart new-item detection
-- 🔧 **useUserProfileOptimized**: Added 5-minute caching system and batch fetching capabilities  
-- 🔧 **Firebase Persistence**: Enabled IndexedDB offline caching for reduced network requests
-- 🔧 **Code Cleanup**: Removed unused files (FileList.js, useUserProfile.js) and debug statements
-- 🔧 **Bundle Optimization**: Reduced build size and eliminated unused code paths
-- 🔧 **Enhanced Error Handling**: Better Firebase error messages and retry logic
-- 🔧 **Improved Security Rules**: Optimized Firestore rules for userProfiles collection
-- 🔧 **Environment Variables**: Secure Firebase configuration loading and validation
-- 🔧 **ESLint Warnings**: Fixed React Hook dependency warnings and unused variables
-- 🔧 **Firebase Hosting**: Corrected configuration (`public: "build"` instead of `public: "public"`)
 
 ## 🤝 Contributing
 
