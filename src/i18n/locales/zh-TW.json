@@ -1,0 +1,99 @@
+{
+  "appTitle": "🎸 樂團分享",
+  "auth": {
+    "signInWithGoogle": "使用 Google 登入",
+    "logout": "登出",
+    "loading": "載入中...",
+    "accessDenied": "❌ 拒絕存取",
+    "needInvitation": "您需要邀請才能加入此樂團。",
+    "contactAdmin": "請聯繫樂團管理員以獲得邀請。"
+  },
+  "navigation": {
+    "files": "📁 檔案",
+    "invites": "👥 邀請",
+    "profile": "👤 個人資料"
+  },
+  "upload": {
+    "uploadFile": "📁 上傳檔案",
+    "shareLink": "🔗 分享連結",
+    "uploading": "上傳中...",
+    "uploadFailed": "上傳失敗：",
+    "fileTooLarge": "檔案太大！{{fileType}} 檔案最大 {{maxSize}}MB",
+    "shareButton": "分享",
+    "invalidUrl": "無效的網址或上傳失敗",
+    "placeholder": "https://...",
+    "fetchingPreview": "取得預覽中..."
+  },
+  "fileTypes": {
+    "audio": "音訊",
+    "link": "連結",
+    "video": "影片",
+    "image": "圖片",
+    "document": "文件",
+    "other": "其他"
+  },
+  "filters": {
+    "type": "類型：",
+    "time": "時間：",
+    "allTypes": "所有類型",
+    "today": "今天",
+    "lastWeek": "上週",
+    "lastMonth": "上個月",
+    "allTime": "所有時間",
+    "showing": "顯示 {{count}} 個項目"
+  },
+  "invites": {
+    "title": "🎸 邀請樂團成員",
+    "description": "生成連結以邀請新成員加入您的樂團",
+    "generateLink": "🔗 生成邀請連結",
+    "generating": "生成中...",
+    "copy": "📋 複製",
+    "copied": "✓ 已複製！",
+    "instructions": "將此連結分享給您想邀請加入樂團的人。當他們登入時，連結將自動註冊他們。",
+    "generateFailed": "無法生成邀請連結："
+  },
+  "profile": {
+    "title": "👤 您的個人資料",
+    "description": "自訂您的姓名在其他樂團成員面前的顯示方式",
+    "email": "電子郵件：",
+    "originalName": "原始姓名：",
+    "displayName": "顯示名稱（暱稱）：",
+    "enterNickname": "輸入您的暱稱",
+    "reset": "重設",
+    "characters": "{{count}}/30 個字元",
+    "saveNickname": "儲存暱稱",
+    "saving": "儲存中...",
+    "preview": "預覽：",
+    "nameWillAppear": "您的姓名將顯示為：",
+    "nicknameEmpty": "❌ 暱稱不能為空",
+    "nicknameTooLong": "❌ 暱稱不能超過30個字元",
+    "updateSuccess": "✅ 暱稱更新成功！",
+    "updateFailed": "❌ 儲存暱稱失敗"
+  },
+  "reactions": {
+    "thumbsUp": "👍",
+    "fire": "🔥",
+    "heart": "❤️",
+    "music": "🎵",
+    "poop": "💩"
+  },
+  "fileInfo": {
+    "uploadedBy": "👤",
+    "fileSize": "{{size}} {{unit}}"
+  },
+  "language": {
+    "switch": "🌐",
+    "english": "English",
+    "traditionalChinese": "繁體中文"
+  },
+  "delete": {
+    "button": "🗑️ 刪除",
+    "confirm": "您確定要刪除此項目嗎？",
+    "confirmTitle": "確認刪除",
+    "deleting": "刪除中...",
+    "success": "✅ 項目刪除成功",
+    "failed": "❌ 刪除項目失敗：",
+    "yes": "是的，刪除",
+    "cancel": "取消"
+  }
+}

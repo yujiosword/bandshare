@@ -1,0 +1,99 @@
+{
+  "appTitle": "🎸 Band Share",
+  "auth": {
+    "signInWithGoogle": "Sign in with Google",
+    "logout": "Logout",
+    "loading": "Loading...",
+    "accessDenied": "❌ Access Denied",
+    "needInvitation": "You need an invitation to join this band.",
+    "contactAdmin": "Contact your band admin to get invited."
+  },
+  "navigation": {
+    "files": "📁 Files",
+    "invites": "👥 Invites",
+    "profile": "👤 Profile"
+  },
+  "upload": {
+    "uploadFile": "📁 Upload File",
+    "shareLink": "🔗 Share Link",
+    "uploading": "Uploading...",
+    "uploadFailed": "Upload failed: ",
+    "fileTooLarge": "File too large! Max {{maxSize}}MB for {{fileType}}",
+    "shareButton": "Share",
+    "invalidUrl": "Invalid URL or upload failed",
+    "placeholder": "https://...",
+    "fetchingPreview": "Fetching preview..."
+  },
+  "fileTypes": {
+    "audio": "Audio",
+    "link": "Link", 
+    "video": "Video",
+    "image": "Image",
+    "document": "Document",
+    "other": "Other"
+  },
+  "filters": {
+    "type": "Type:",
+    "time": "Time:",
+    "allTypes": "All Types",
+    "today": "Today",
+    "lastWeek": "Last Week",
+    "lastMonth": "Last Month",
+    "allTime": "All Time",
+    "showing": "Showing {{count}} items"
+  },
+  "invites": {
+    "title": "🎸 Invite Band Members",
+    "description": "Generate a link to invite new members to your band",
+    "generateLink": "🔗 Generate Invite Link",
+    "generating": "Generating...",
+    "copy": "📋 Copy",
+    "copied": "✓ Copied!",
+    "instructions": "Share this link with people you want to invite to your band. The link will automatically register them when they sign in.",
+    "generateFailed": "Failed to generate invite link: "
+  },
+  "profile": {
+    "title": "👤 Your Profile",
+    "description": "Customize how your name appears to other band members",
+    "email": "Email:",
+    "originalName": "Original Name:",
+    "displayName": "Display Name (Nickname):",
+    "enterNickname": "Enter your nickname",
+    "reset": "Reset",
+    "characters": "{{count}}/30 characters",
+    "saveNickname": "Save Nickname",
+    "saving": "Saving...",
+    "preview": "Preview:",
+    "nameWillAppear": "Your name will appear as:",
+    "nicknameEmpty": "❌ Nickname cannot be empty",
+    "nicknameTooLong": "❌ Nickname must be 30 characters or less",
+    "updateSuccess": "✅ Nickname updated successfully!",
+    "updateFailed": "❌ Failed to save nickname"
+  },
+  "reactions": {
+    "thumbsUp": "👍",
+    "fire": "🔥",
+    "heart": "❤️",
+    "music": "🎵",
+    "poop": "💩"
+  },
+  "fileInfo": {
+    "uploadedBy": "👤",
+    "fileSize": "{{size}} {{unit}}"
+  },
+  "language": {
+    "switch": "🌐",
+    "english": "English",
+    "traditionalChinese": "繁體中文"
+  },
+  "delete": {
+    "button": "🗑️ Delete",
+    "confirm": "Are you sure you want to delete this item?",
+    "confirmTitle": "Confirm Delete",
+    "deleting": "Deleting...",
+    "success": "✅ Item deleted successfully",
+    "failed": "❌ Failed to delete item: ",
+    "yes": "Yes, Delete",
+    "cancel": "Cancel"
+  }
+}
