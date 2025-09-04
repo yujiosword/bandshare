@@ -144,8 +144,8 @@ header h1 {
 
 .user-info .language-btn {
   background: rgba(255,255,255,0.8);
-  padding: 6px 12px;
-  font-size: 0.8rem;
+  padding: 8px 16px;
+  font-size: 0.9rem;
 }
 
 .nav-buttons {
@@ -222,6 +222,7 @@ header h1 {
   cursor: pointer;
   border-radius: 10px;
   font-weight: bold;
+  font-size: 1rem;
   transition: all 0.3s ease;
 }
 
@@ -240,11 +241,29 @@ header h1 {
   border: 2px dashed #ddd;
   border-radius: 10px;
   cursor: pointer;
+  font-size: 1rem;
   transition: border-color 0.3s ease;
 }
 
 .upload-form input[type="file"]:hover {
   border-color: #667eea;
+}
+
+.upload-form input[type="file"]::file-selector-button {
+  font-size: 1rem;
+  font-weight: bold;
+  background: #667eea;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-right: 15px;
+  transition: background 0.3s ease;
+}
+
+.upload-form input[type="file"]::file-selector-button:hover {
+  background: #5a67d8;
 }
 
 .upload-form form {
@@ -273,6 +292,7 @@ header h1 {
   border-radius: 10px;
   cursor: pointer;
   font-weight: bold;
+  font-size: 1rem;
   transition: background 0.3s ease;
 }
 
